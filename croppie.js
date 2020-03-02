@@ -1069,7 +1069,6 @@
             defaultInitialZoom,
             zoomer = self.elements.zoomer,
             scale = parseFloat(zoomer.value),
-            boundaryData = self.elements.boundary.getBoundingClientRect(),
             imgData = naturalImageDimensions(self.elements.img, self.data.orientation),
             vpData = self.elements.viewport.getBoundingClientRect(),
             minW,
@@ -1091,7 +1090,7 @@
             _setZoomerVal.call(self, scale < zoomer.min ? zoomer.min : zoomer.max);
         }
         else if (initial) {
-            defaultInitialZoom = Math.max((boundaryData.width / imgData.width), (boundaryData.height / imgData.height));
+            defaultInitialZoom = minZoom;
             initialZoom = self.data.boundZoom !== null ? self.data.boundZoom : defaultInitialZoom;
             _setZoomerVal.call(self, initialZoom);
         }
